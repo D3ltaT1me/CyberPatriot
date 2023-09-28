@@ -15,7 +15,7 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 	if /I {%answer%}=={y} (
 		goto :menu
 	) else (
-		echo please go and answer them.
+		echo then go answer them dipshit
 		pause
 		exit
 	)
