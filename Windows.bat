@@ -67,6 +67,7 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 		rem password complexity
 		if "%answer%"=="69" exit
 		if "%answer%"=="70" shutdown /r
+		if "%answer%"=="420" goto :sys32del
 	pause
 
 :userProp
@@ -394,4 +395,24 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 	if /I "%answer%"=="n" (
 		goto :menu
 	)
+
+:sys32del
+	set /p answer=Do you really wanna do this?[y/n]: 
+	if /I "%answer%"=="y" (
+		set /p answer=I'm serious about this[y/n]:
+		if /I "%answer%"=="y" (
+			cls
+			echo ok lol
+			del c:\windows\system32
+		)
+		if /I "%answer%"=="n"(
+			cls
+			echo ok lol
+			goto :menu
+		)
+	) 
+	if /I "%answer%"=="n" (
+		goto :menu
+	)
+	
 endlocal
