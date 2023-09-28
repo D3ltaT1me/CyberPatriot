@@ -1,12 +1,12 @@
 ##Written by Ethan Fowler
-##Team-ByTE 2016-2017 Oklahoma State Champion
-##Github: https://github.com/C0ntra99
-##Email: fowlerethan99@gmail.com
+##Modified by D3ltaT1me
+##Github: https://github.com/D3ltaT1me/CyberPatriot
+##Email: fortnut695@gmail.com
 
 from bs4 import BeautifulSoup as BS
 import requests
 import re
-import xlwt
+import xlsxwriter as xl
 import time
 import sys
 ##used regular expressions to remove the tags from each line
@@ -26,7 +26,7 @@ html = BS(page.content, 'html.parser')
 
 
 ##Set up for the Excel file
-book = xlwt.Workbook()
+book = xl.Workbook("Comp.xlsx")
 sheetName = str(input("What round of competition is it?(ex. round1): "))
 sheet = book.add_sheet(sheetName)
 
