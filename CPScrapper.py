@@ -26,8 +26,12 @@ html = BS(page.content, 'html.parser')
 
 
 ##Set up for the Excel file
-book = xl.Workbook()
-sheetName = str(input("What round of competition is it?(ex. round1): "))
+fileName = str(input("Please enter a filename(ex. round1Scores.xlsx): "))
+if not ".xlsx" in fileName:
+    book = xl.Workbook(fileName +".xlsx")
+else:
+    book = xl.Workbook(fileName)
+sheetName = str(input("What round of competition is it?(ex. round1)(this is for the sheet name): "))
 sheet = book.add_worksheet(sheetName)
 
 cols = ["Placement", "Team Number", "Location", "Division", "Teir", "Scored Images", "Play Time", "Current Score"]
@@ -64,10 +68,9 @@ while True:
             L.append(x)
 
         ##Adds the elements of the List to each column in the spreadsheet    
-        row = sheet.row(R)
         for index, col in enumerate(cols):
             val = L[index]
-            row.write(index, val)
+            sheet.write(R, index, val)
 
         start += 8
         end += 8
@@ -80,8 +83,16 @@ while True:
 elapsed_time = time.time() - start_time
 elapsed_time = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
 print("Time Elapsed: ", elapsed_time)
-fileName = str(input("Please enter a fielname(ex. round1Scores.xls): "))
-if not ".xls" in fileName:
-    book.save(fileName +".xls")
-else:
-    book.save(fileName)
+# close and save our completed file
+# this checks for FileCreateError, a common error with xlsxwriter
+while True:
+    try:
+        book.close()
+    except xl.exceptions.FileCreateError as e:
+        decision = input("Exception caught in workbook.close(): %s\n"
+                         "Please close the file if it is open in Excel.\n"
+                         "Try to write file again? [Y/n]: " % e)
+        if decision != 'n':
+            continue
+
+    break
