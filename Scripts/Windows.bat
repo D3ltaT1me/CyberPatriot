@@ -221,10 +221,18 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 
 	rem Enable UAC
 	echo Note: this may not work =/
-	set /p answer=Enter ConsentPromptBehaviorAdmin Value[0-5]
+	set /p answer=Enter ConsentPromptBehaviorAdmin Value[0-5, help]
+	if /I "%answer%"=="help" (
+		echo 0: This option allows the Consent Admin to perform an operation that requires elevation without consent or credentials.
+		echo 1: This option prompts the Consent Admin to enter his or her user name and password (or another valid admin) when an operation requires elevation of privilege. This operation occurs on the secure desktop.
+		echo 2: This option prompts the administrator in Admin Approval Mode to select either "Permit" or "Deny" an operation that requires elevation of privilege. If the Consent Admin selects Permit, the operation will continue with the highest available privilege. "Prompt for consent" removes the inconvenience of requiring that users enter their name and password to perform a privileged task. This operation occurs on the secure desktop.
+		echo 3: This option prompts the Consent Admin to enter his or her user name and password (or that of another valid admin) when an operation requires elevation of privilege.
+		echo 4: This prompts the administrator in Admin Approval Mode to select either "Permit" or "Deny" an operation that requires elevation of privilege. If the Consent Admin selects Permit, the operation will continue with the highest available privilege. "Prompt for consent" removes the inconvenience of requiring that users enter their name and password to perform a privileged task.
+		echo 5: This option is the default. It is used to prompt the administrator in Admin Approval Mode to select either "Permit" or "Deny" for an operation that requires elevation of privilege for any non-Windows binaries. If the Consent Admin selects Permit, the operation will continue with the highest available privilege. This operation will happen on the secure desktop.
+	) else (
+		Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value %answer%
+	)
 
-	Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value %answer%
-	
 	pause
 	goto :menu
 
