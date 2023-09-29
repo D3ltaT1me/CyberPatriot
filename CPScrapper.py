@@ -26,14 +26,13 @@ html = BS(page.content, 'html.parser')
 
 
 ##Set up for the Excel file
-book = xl.Workbook("Comp.xlsx")
+book = xl.Workbook()
 sheetName = str(input("What round of competition is it?(ex. round1): "))
-sheet = book.add_sheet(sheetName)
+sheet = book.add_worksheet(sheetName)
 
 cols = ["Placement", "Team Number", "Location", "Division", "Teir", "Scored Images", "Play Time", "Current Score"]
-row = sheet.row(0)
 for index, col in enumerate(cols):
-    row.write(index, col)
+    sheet.write(0, index, col)
 
 print("~"*15  + "Starting program" + "~"*15)
 ##Starts at 8 and ends at 15 in order to skip the labels at the top of the webpage
