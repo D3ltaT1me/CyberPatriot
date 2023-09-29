@@ -34,15 +34,14 @@ else:
 sheetName = str(input("What round of competition is it?(ex. round1)(this is for the sheet name): "))
 sheet = book.add_worksheet(sheetName)
 
-cols = ["Placement", "Team Number", "Location", "Division", "Teir", "Scored Images", "Play Time", "Current Score"]
+cols = ["Placement", "Team Number", "Location", "Scored Images", "Play Time", "Score Time", "Letter Code", "Current Score"]
 for index, col in enumerate(cols):
     sheet.write(0, index, col)
 
 print("~"*15  + "Starting program" + "~"*15)
 ##Starts at 8 and ends at 15 in order to skip the labels at the top of the webpage
-start = 8
-end = 15
-placement = 1
+start = 0
+end = 8
 R = 1
 start_time = time.time()
 
@@ -52,9 +51,6 @@ while True:
 
     ##make sure the line has a value
     if not len(test) == 0:
-        ##insert a placement
-        test.insert(0,placement)
-
         ##Created a new list for the newly formatted elements in the table
         L = []
         for x in test:
@@ -66,15 +62,16 @@ while True:
             else:
                 pass
             L.append(x)
+        print(L)
 
         ##Adds the elements of the List to each column in the spreadsheet    
         for index, col in enumerate(cols):
             val = L[index]
+            print(val)
             sheet.write(R, index, val)
 
         start += 8
         end += 8
-        placement += 1
         R += 1
 
     else:
