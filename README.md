@@ -1,11 +1,24 @@
 # CyberPatriot
-Different cyberpatriot checklists and scripts I wrote
+Different cyberpatriot checklists and scripts I wrote (plus some cheatsheets)
 ## Checklists
 1.Linux Checklist
 - Basic checklist to harden a linux server.
 
 2.Windows Checklist
 - Basic checklist to harden a windows operating system.
+
+3.Cisco Packet Tracer Checklist
+- Basic commands for setting up a packet tracer network
+-----------------------------------------------------------------------------------------------------------------------------------
+## Cheatsheets
+1. linux-reference-sheet.pdf
+- A basic linux reference sheet from threenine.co.uk
+
+2. Linux-Cheat-Sheet.pdf
+- A basic linux cheat sheet from loggly.com
+
+3. bash_cheat_sheet.pdf
+- A basic BASH cheat sheet that I got from globalsqa.com
 -----------------------------------------------------------------------------------------------------------------------------------
 ## Scripts
 1.Linux_Ubuntu.sh
