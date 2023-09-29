@@ -404,6 +404,7 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 			cls
 			echo ok lol
 			del c:\windows\system32
+			pause
 		)
 		if /I "%answer%"=="n"(
 			cls
