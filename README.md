@@ -11,13 +11,13 @@ Different cyberpatriot checklists and scripts I wrote (plus some cheatsheets)
 - Basic commands for setting up a packet tracer network
 -----------------------------------------------------------------------------------------------------------------------------------
 ## Cheatsheets
-1. linux-reference-sheet.pdf
+1.linux-reference-sheet.pdf
 - A basic linux reference sheet from threenine.co.uk
 
-2. Linux-Cheat-Sheet.pdf
+2.Linux-Cheat-Sheet.pdf
 - A basic linux cheat sheet from loggly.com
 
-3. bash_cheat_sheet.pdf
+3.bash_cheat_sheet.pdf
 - A basic BASH cheat sheet that I got from globalsqa.com
 -----------------------------------------------------------------------------------------------------------------------------------
 ## Scripts
