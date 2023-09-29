@@ -220,7 +220,10 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 :UAC
 
 	rem Enable UAC
-	echo Turning on UAC has to be done manually.
+	echo Note: this may not work =/
+	set /p answer=Enter ConsentPromptBehaviorAdmin Value[0-5]
+
+	Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value %answer%
 	
 	pause
 	goto :menu
