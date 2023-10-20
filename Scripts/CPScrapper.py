@@ -9,6 +9,7 @@ import re
 import xlsxwriter as xl
 import time
 import sys
+from tqdm import tqdm
 ##used regular expressions to remove the tags from each line
 def removeTag(raw_text):
     cleanr = re.compile('<.*?>')
@@ -34,16 +35,21 @@ else:
 sheetName = str(input("What round of competition is it?(ex. round1)(this is for the sheet name): "))
 sheet = book.add_worksheet(sheetName)
 
-cols = ["Placement", "Team Number", "Location", "Scored Images", "Play Time", "Score Time", "Letter Code", "Current Score"]
+cols = ["Placement", "Team Number", "Location", "Division", "Scored Images", "Play Time", "Score Time", "Letter Code", "Current Score"]
 for index, col in enumerate(cols):
     sheet.write(0, index, col)
 
 print("~"*15  + "Starting program" + "~"*15)
 ##Starts at 8 and ends at 15 in order to skip the labels at the top of the webpage
 start = 0
-end = 8
+end = 9
 R = 1
 start_time = time.time()
+
+jeo = html.find_all("tr")
+
+pbar = tqdm(total=(len(jeo) - 1), desc="Grabbing Data", position=0)
+pbar2 = tqdm(total=(len(jeo) - 1), desc="Writing Data", position=1)
 
 while True:
     ##Take out the table with the scores
@@ -53,6 +59,7 @@ while True:
     if not len(test) == 0:
         ##Created a new list for the newly formatted elements in the table
         L = []
+        
         for x in test:
             x = str(x)
             x = removeTag(x)
@@ -62,16 +69,18 @@ while True:
             else:
                 pass
             L.append(x)
-        print(L)
+        pbar.update()
+        # print(L)
 
         ##Adds the elements of the List to each column in the spreadsheet    
         for index, col in enumerate(cols):
             val = L[index]
-            print(val)
+            # print(val)
             sheet.write(R, index, val)
+        pbar2.update()
 
-        start += 8
-        end += 8
+        start += 9
+        end += 9
         R += 1
 
     else:
