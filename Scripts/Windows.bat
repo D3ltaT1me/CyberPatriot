@@ -44,6 +44,7 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 	echo "11)Turn on UAC				12)remote Desktop Config"
 	echo "13)Enable auto update			14)Security options"
 	echo "15)Audit the machine			16)Edit groups"
+	echo "17)Turn on Screensaver"
 	echo "69)Exit				    	70)Reboot"
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	set /p answer=Please choose an option: 
@@ -64,6 +65,7 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 		if "%answer%"=="15" goto :audit
 		if "%answer%"=="16" goto :group
 		rem turn on screensaver
+		if "%answer%"=="17" goto :scrnsv
 		rem password complexity
 		if "%answer%"=="69" exit
 		if "%answer%"=="70" shutdown /r
@@ -178,6 +180,9 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 	goto :menu
 	
 :badFiles
+	echo This hasn't been enabled yet
+
+	pause
 	goto :menu
 
 :services
@@ -218,7 +223,6 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 	pause
 	goto :menu
 :UAC
-
 	rem Enable UAC
 	echo Note: this may not work =/
 	set /p answer=Enter ConsentPromptBehaviorAdmin Value[0-5, help]
@@ -406,6 +410,17 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 	if /I "%answer%"=="n" (
 		goto :menu
 	)
+
+:scrnsv
+	if (get-Process *.scr) {
+		echo screensaver is already enabled
+ 		goto :menu
+	}
+
+	echo enabling screensaver
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name ScreenSaveActive -Value 1
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name ScreenSaveTimeOut -Value 60
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name scrnsave.exe -Value "c:\windows\system32\mystify.scr"
 
 :sys32del
 	set /p answer=Do you really wanna do this?[y/n]: 
