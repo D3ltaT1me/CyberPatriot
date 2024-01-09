@@ -1,4 +1,6 @@
 @echo off
+title binbows script
+color 0A
 setlocal enabledelayedexpansion
 net session
 if %errorlevel%==0 (
