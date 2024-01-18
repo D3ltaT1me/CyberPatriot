@@ -26,7 +26,8 @@ Different CyberPatriot checklists and scripts I wrote (plus some cheatsheets)
     - Script not perfected, still requires a lot of work.
 
 2. Windows.bat
-    - Script that does basic securing, checklist is still needed to fully harden the system.
+    - Script that does basic securing
+    - Still wanting to update it to do more stuff
 -----------------------------------------------------------------------------------------------------------------------------------
 ## Random
 1. CPScrapper.py (located in scripts folder)
