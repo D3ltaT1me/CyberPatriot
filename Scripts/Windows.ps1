@@ -1,1 +1,1 @@
-@echo off
+Write-host "big balls"
