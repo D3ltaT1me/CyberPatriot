@@ -1,21 +1,21 @@
 # CyberPatriot
-Different cyberpatriot checklists and scripts I wrote (plus some cheatsheets)
+Different CyberPatriot checklists and scripts I wrote (plus some cheatsheets)
 ## Checklists
-1.Linux Checklist
-- Basic checklist to harden a linux server.
+1. Linux Checklist
+- Basic checklist to harden a Linux server.
 
-2.Windows Checklist
-- Basic checklist to harden a windows operating system.
+2. Windows Checklist
+- Basic checklist to harden a Windows operating system.
 
-3.Cisco Packet Tracer Checklist
+3. Cisco Packet Tracer Checklist
 - Basic commands for setting up a packet tracer network
 -----------------------------------------------------------------------------------------------------------------------------------
 ## Cheatsheets
 1.linux-reference-sheet.pdf
-- A basic linux reference sheet from threenine.co.uk
+- A basic Linux reference sheet from threenine.co.uk
 
 2.Linux-Cheat-Sheet.pdf
-- A basic linux cheat sheet from loggly.com
+- A basic Linux cheat sheet from loggly.com
 
 3.bash_cheat_sheet.pdf
 - A basic BASH cheat sheet that I got from globalsqa.com
@@ -30,7 +30,4 @@ Different cyberpatriot checklists and scripts I wrote (plus some cheatsheets)
 -----------------------------------------------------------------------------------------------------------------------------------
 ## Random
 1.CPScrapper.py (located in scripts folder)
-- This is just a simple web scraper that I made with python3 that will scrape all the scores from the cyberpatriot scoreboard and put them in an excel spreadsheet for future use.
-
-*Please note that none of these are meant to be used for competition*
-*Doing so will result in disqualification*
+- This is just a simple web scraper that I made with python3 that will scrape all the scores from the CyberPatriot scoreboard and put them in an Excel spreadsheet for future use.
